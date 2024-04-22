@@ -35,19 +35,14 @@ int main(){
           if(flag == 0) front++; 
           else back--; 
         }
-      } else { 
-        if(flag == 0) front++;
-        else back--;
-        attack--; 
-        continue; 
       }
-
       flag = 1 - flag; 
     }
 
     cout << sunkShips << endl; 
 
-  return 0;
+  
 
   }
+  return 0;
 }
