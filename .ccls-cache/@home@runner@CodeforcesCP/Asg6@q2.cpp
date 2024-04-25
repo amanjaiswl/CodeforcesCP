@@ -23,22 +23,23 @@ void insert(Node** head, int data){
   }
 }
 
-int NfromLast(Node *head, int N){
-  Node *current = head;
-  Node *temp = head;
-  int count = 0;
-  while(current != nullptr){
-    current = current->next;
-    count++;
-    
+int NfromLast(Node* head, int N) {
+      Node* fast = head;
+      Node* slow = head;
+      int count = 0;
+
+      for (int i = 0; i < N; i++) {
+          if (fast == nullptr) return -1;  
+          fast = fast->next;
+      }
+
+      while (fast != nullptr) {
+          fast = fast->next;
+          slow = slow->next;
+      }
+
+      return slow->data;
   }
-  int k = count - N;
-  for(int i=0; i<k; i++){
-    temp = temp->next;
-    
-  }
-  return temp->data;
-}
 
 
 void print(Node *head){
