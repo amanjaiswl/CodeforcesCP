@@ -1,4 +1,4 @@
-// 
+// passed on pretest-1 but failed on second one and can not see the failed ones. wtf. 
 
 #include <bits/stdc++.h>
 
