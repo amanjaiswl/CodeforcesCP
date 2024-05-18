@@ -1,48 +1,34 @@
-// passed on pretest-1 but failed on second one and can not see the failed ones. wtf. 
-
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
+int max_draws(int p1, int p2, int p3) {
+    if ((p1 + p2 + p3) % 2 != 0) {
+        return -1;
+    }
+
+    int totalGame = (p1 + p2 + p3) / 2;
+    int MaxDraws = min(totalGame, p1 + p2);
+
+    return MaxDraws;
+}
+
 int main() {
     int t;
-    cin >> t;
-    while (t--) {
-        int p,q,r;
-        cin >> p >> q >> r;
-      if(p <= q && q<=r){
-        if(p+q+r == 0){
-          cout << 0 << endl;
-          continue;
-        }
-        if((p+q+r) % 2 != 0){
-          cout << -1 << endl;
-          continue;
-        }
-      int zeroplace = 0;
-      if(p==0) zeroplace++;
-      if(q==0) zeroplace++;
-      if(r==0) zeroplace++;
-      
-      if((p+q+r)%2 ==0 && zeroplace == 2){
-        cout << -1 << endl;
-        continue;
-      }
-      if(zeroplace == 1){
-        cout << min({q,r}) << endl;
-        continue;
-        
-      }
-      if(zeroplace ==0){
-        cout << 2* min({p,q,r}) << endl;
-        continue;
-      }
+    cin >> t;  
+    vector<int> results;
+
+    for (int i = 0; i < t; ++i) {
+        int p1, p2, p3;
+        cin >> p1 >> p2 >> p3;
+        results.push_back(max_draws(p1, p2, p3));
     }
-      else{
-        cout << -1 << endl;
-        continue;
-      }
+
+    for (int result : results) {
+        cout << result << endl;
     }
-  
+
     return 0;
 }
