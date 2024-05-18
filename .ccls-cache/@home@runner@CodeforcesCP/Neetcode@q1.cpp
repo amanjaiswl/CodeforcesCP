@@ -1,4 +1,5 @@
 // NeetCode roadmap question. https://leetcode.com/problems/contains-duplicate/description/
+// have to press ctrl-D after the inputs to indicate eof
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,3 +24,4 @@ int main() {
     cout << "false" << endl;
     return 0;
 }
+
