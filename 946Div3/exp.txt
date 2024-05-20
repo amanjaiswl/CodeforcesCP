@@ -1,0 +1,4 @@
+did question 1 and 2 in the contest. knew q5, started doing it, 10 min was left. got a bit anxious. i submitted the code 29 sec before the contest ended, it was wrong, but it still didn't count as part of contest. 
+so after the contest ended, made some changes, like I was reading the inout wrong, so fixed it, and then instead of adding x to the bal i was adding m to bal.and yeah.
+spent time on q3, q4 but couldn't figure it out during the contest. will try later.
+so yeah, now I have to study for tomorrow's pds exam, the last exam of this year.
