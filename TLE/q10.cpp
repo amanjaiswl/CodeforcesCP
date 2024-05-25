@@ -1,3 +1,4 @@
+// https://codeforces.com/problemset/problem/1873/C
 #include <iostream>
 
 using namespace std;
