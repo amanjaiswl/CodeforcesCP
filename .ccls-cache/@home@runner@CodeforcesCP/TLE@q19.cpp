@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -9,16 +10,22 @@ int main(){
   int t;
   cin >> t;
   while(t--){
-    int n, k;
-    cin >> n>> k;
-
-    int x = n%k;
-    if(x%2 == 0){
-      cout << "YES" << endl;
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int l=0;
+    int r= s.length()-1;
+    for(int i=0; i<n/2; i++){
+      if ((s[r] == '0' && s[l] =='1' ) || ( s[r] =='1' && s[l] =='0') ){
+        l++;
+        r--;
+      }
+      else{
+        break;
+      }
     }
-    else{
-      cout << "NO" << endl;
-    }
+    cout << n-(2*l) << endl;
   }
 
   
