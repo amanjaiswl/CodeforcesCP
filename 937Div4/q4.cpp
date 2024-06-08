@@ -1,7 +1,12 @@
-// this code is failing on 5101st token of test 2. expected yes output no. how ??
-
 #include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+
 using namespace std;
+
+const int MAX = 100000;
+vector<int> binaryDecimals;
 
 bool isBinary(int n) {
     while (n > 0) {
@@ -14,27 +19,46 @@ bool isBinary(int n) {
     return true;
 }
 
+void generate() {
+    for (int i = 2; i <= MAX; ++i) {
+        if (isBinary(i)) {
+            binaryDecimals.push_back(i);
+        }
+    }
+}
+
+bool binProd(int n) {
+    if (n == 1) {
+        return true;
+    }
+    bool ans = false;
+    for (int i : binaryDecimals) {
+        if (i > n) break;
+        if (n % i == 0) {
+            ans = ans || binProd(n / i);
+        }
+    }
+    return ans;
+}
+
 int main() {
     int t;
     cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        if (isBinary(n)) {
-            cout << "Yes" << endl;
-            continue;
+
+    vector<int> queries(t);
+    for (int i = 0; i < t; ++i) {
+        cin >> queries[i];
+    }
+
+    generate();
+
+    for (int n : queries) {
+        if (binProd(n)) {
+            cout << "YES" << endl;
         } else {
-            while (n % 11 == 0 && n > 0) {
-                n /= 11;
-            }
-            if (isBinary(n)) {
-                cout << "Yes" << endl;
-              continue;
-            }else {
-              cout << "No\n";
-              }
-            } 
+            cout << "NO" << endl;
         }
+    }
 
     return 0;
 }
