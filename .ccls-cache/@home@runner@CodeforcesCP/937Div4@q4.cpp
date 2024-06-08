@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 #include <algorithm>
 
 using namespace std;
@@ -19,7 +18,7 @@ bool isBinary(int n) {
     return true;
 }
 
-void generate() {
+void generateBinaryDecimals() {
     for (int i = 2; i <= MAX; ++i) {
         if (isBinary(i)) {
             binaryDecimals.push_back(i);
@@ -27,7 +26,7 @@ void generate() {
     }
 }
 
-bool binProd(int n) {
+bool isBc(int n) {
     if (n == 1) {
         return true;
     }
@@ -35,7 +34,7 @@ bool binProd(int n) {
     for (int i : binaryDecimals) {
         if (i > n) break;
         if (n % i == 0) {
-            ans = ans || binProd(n / i);
+            ans = ans || isBc(n / i);
         }
     }
     return ans;
@@ -45,15 +44,12 @@ int main() {
     int t;
     cin >> t;
 
-    vector<int> queries(t);
-    for (int i = 0; i < t; ++i) {
-        cin >> queries[i];
-    }
+    generateBinaryDecimals();
 
-    generate();
-
-    for (int n : queries) {
-        if (binProd(n)) {
+    while (t--) {
+        int n;
+        cin >> n;
+        if (isBc(n)) {
             cout << "YES" << endl;
         } else {
             cout << "NO" << endl;
