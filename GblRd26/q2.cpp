@@ -1,33 +1,38 @@
+// such a easy question. knew the logic upto certain extent but couldn't do it in the contest.
+
 #include <iostream>
 #include <string>
+using namespace std;
 
-bool solve(const std::string& x) {
-    if (x == "10") return true;
+#define ll long long
 
-    if (x.back() == '9') return false;
+void solve() {
+    ll n; cin >> n;
+    string num = to_string(n);
 
-    if (x.length() == 2 && x[1] == '0') return false;
+    if (num.front() != '1') {
+        cout << "NO\n";
+        return;
+    }
 
-    if (x.length() >= 3 && x[1] == '0') return false;
+    if (num.back() == '9') {
+        cout << "NO\n";
+        return;
+    }
 
-    if (x.length() >= 3) {
-        int firstTwo = (x[0] - '0') * 10 + (x[1] - '0');
-          firstTwo--;
-        if (!((firstTwo >= 10 && firstTwo <= 18) || (firstTwo >= 55 && firstTwo <= 99))) {
-            return false;
+    for (int i = 1; i < num.length() - 1; ++i) {
+        if (num[i] == '0') {
+            cout << "NO\n";
+            return;
         }
     }
 
-    return true;
+    cout << "YES\n";
 }
 
 int main() {
-    int t;
-    std::cin >> t;
-    while (t--) {
-        std::string x;
-        std::cin >> x;
-        std::cout << (solve(x) ? "YES" : "NO") << std::endl;
-    }
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    int t; cin >> t;
+    while(t--) solve();
     return 0;
 }
