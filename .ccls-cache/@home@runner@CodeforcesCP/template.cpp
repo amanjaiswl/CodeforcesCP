@@ -3,15 +3,23 @@
 #include <string>
 #include <algorithm>
 
+using namespace std;
+
 #define ll long long
 
+void solve(){
 
-using namespace std;
+  
+}
+
+
+
 
 int main(){
   int t;
   cin>>t;
   while (t--){
+    solve();
 
   }
   return 0;
