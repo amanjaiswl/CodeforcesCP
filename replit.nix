@@ -5,5 +5,8 @@
 		pkgs.ccls
 		pkgs.gdb
 		pkgs.gnumake
+    pkgs.python39Full
+    pkgs.python3Packages.watchdog
+
 	];
 }
