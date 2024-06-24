@@ -1,34 +1,37 @@
 #include <iostream>
+#include <vector>
 #include <string>
-#include <unordered_set>
+#include <algorithm>
+#include <cmath>
+
 using namespace std;
+
+#define ll long long
 
 void solve() {
     int n;
-    cin >> n;
+    char current_color;
+    cin >> n >> current_color;
     string s;
     cin >> s;
 
-    unordered_set<char> seen;
-    int split_index = n;  
+    s += s;
 
-    for (int i = 0; i < n; ++i) {
-        if (seen.count(s[i])) {
-            split_index = i;
-            break;
+    int last_green = -1;
+    int max_wait_time = 0;
+
+    for (int i = 2 * n - 1; i >= 0; --i) {
+        if (s[i] == 'g') {
+            last_green = i;
         }
-        seen.insert(s[i]);
+        if (i < n && s[i] == current_color) {
+            if (last_green != -1) {
+                max_wait_time = max(max_wait_time, last_green - i);
+            }
+        }
     }
 
-    int f_a = seen.size();
-
-    unordered_set<char> unique_b;
-    for (int i = split_index; i < n; ++i) {
-        unique_b.insert(s[i]);
-    }
-    int f_b = unique_b.size();
-
-    cout << f_a + f_b << "\n";
+    cout << max_wait_time << endl;
 }
 
 int main() {
