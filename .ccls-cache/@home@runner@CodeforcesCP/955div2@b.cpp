@@ -1,46 +1,41 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 
-void solve() {
-    int n, l, r;
-    cin >> n >> l >> r;
-    vector<int> v(n);
-    for (auto &i : v) {
-        cin >> i;
+#define ll long long
+
+
+void solve(){
+  int x,y,k;
+  cin >> x >> y >> k;
+
+
+  while(x>1 && k>0){
+    int steps = y - x%y;
+    if(steps >= k){
+      x+=k;
+      k=0;
     }
-
-    vector<long long> prefix_sum(n + 1, 0);
-    for (int i = 0; i < n; ++i) {
-        prefix_sum[i + 1] = prefix_sum[i] + v[i];
+    else{
+      x+=steps;
+      k-=steps;
     }
+    while(x%y ==0) x/=y;
+  }
 
-    int win = 0;
-    int start = 0, end = 0;
+  if(k>0 && x==1){
+    k = k % y-1;
+    x+=k;
+  }
 
-    while (end < n) {
-        long long sum = prefix_sum[end + 1] - prefix_sum[start];
-        if (sum >= l && sum <= r) {
-            win++;
-            end++;
-            start = end; 
-        } else if (sum < l) {
-            end++; 
-        } else {
-            start++; 
-        }
-    }
-
-    cout << win << "\n";
+  cout << x << "\n";
 }
 
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    return 0;
+
+int main(){
+  int t;
+  cin >> t;
+  while(t--){
+    solve();
+  }
 }
